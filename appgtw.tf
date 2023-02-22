@@ -71,7 +71,7 @@ resource "azurerm_application_gateway" "appgtw" {
     port                  = 80
     protocol              = "Http"
     request_timeout       = 60
-    host_name             = azurerm_container_app.main.latest_revision_fqdn //TODO
+    host_name             = azurerm_container_app.main.latest_revision_fqdn 
     probe_name            = "probe"
   }
 
