@@ -8,7 +8,7 @@ locals {
   redirect_configuration_name    = "${azurerm_virtual_network.main.name}-rdrcfg"
 }
 
-resource "azurerm_public_ip" "example" {
+resource "azurerm_public_ip" "pip" {
   name                = "example-pip"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
@@ -40,8 +40,7 @@ resource "azurerm_application_gateway" "appgtw" {
 
   frontend_ip_configuration {
     name      = local.frontend_ip_configuration_name
-    //subnet_id = azurerm_subnet.appgtw.id
-    public_ip_address_id = azurerm_public_ip.example.id
+    public_ip_address_id = azurerm_public_ip.pip.id
   }
 
   backend_address_pool {
